@@ -1,0 +1,10 @@
+{
+  "name": "repository",
+  "resources": [
+    {
+      "type": "copy",
+      "source": "php",
+      "target": "classes/local/clapi/repository"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "modal",
+  "resources": [
+    {
+      "type": "copy",
+      "source": "php",
+      "target": "classes/local/clapi/modal"
+    },
+    {
+      "type": "copy",
+      "source": "amd",
+      "target": "amd/src/local/clapi/modal"
+    },
+    {
+      "type": "copy",
+      "source": "templates",
+      "target": "templates/local/clapi/modal"
+    },
+    {
+      "type": "lang",
+      "source": "lang/en.php"
+    }
+  ]
+}

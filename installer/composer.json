@@ -1,0 +1,21 @@
+{
+  "name": "adeluxe-tools/clapi-installer",
+  "description": "Composer plugin that materialises selected CLAPI modules into Moodle plugins.",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "composer-plugin-api": "^2.6"
+  },
+  "require-dev": {
+    "composer/composer": "^2.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "AdeluxeTools\\ClapiInstaller\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "AdeluxeTools\\ClapiInstaller\\Plugin"
+  }
+}

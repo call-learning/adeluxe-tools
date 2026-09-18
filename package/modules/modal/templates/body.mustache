@@ -1,0 +1,8 @@
+<div class="clapi-modal-body">
+    {{#message}}
+        <p>{{message}}</p>
+    {{/message}}
+    {{^message}}
+        <p>{{#str}} clapi_modal_default_message, __COMPONENT__ {{/str}}</p>
+    {{/message}}
+</div>

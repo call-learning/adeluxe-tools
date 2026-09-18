@@ -1,0 +1,34 @@
+{
+  "name": "adeluxe-tools/moodle-mod_example",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../installer",
+      "options": {"symlink": false}
+    },
+    {
+      "type": "path",
+      "url": "../package",
+      "options": {"symlink": false}
+    }
+  ],
+  "require-dev": {
+    "adeluxe-tools/moodle-clapi": "@dev"
+  },
+  "config": {
+    "allow-plugins": {
+      "adeluxe-tools/clapi-installer": true
+    }
+  },
+  "extra": {
+    "clapi": {
+      "component": "mod_example",
+      "target": ".",
+      "modules": [
+        "repository",
+        "modal"
+      ]
+    }
+  }
+}
