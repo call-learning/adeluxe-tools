@@ -1,0 +1,28 @@
+# Local AI assistant configuration and workspaces.
+.openspec/
+.opencode/
+.codex/
+
+# JetBrains IDEs (PhpStorm, IntelliJ IDEA, etc.).
+.idea/
+*.iml
+
+# Local editor and operating-system files.
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local dependencies and generated tooling output.
+vendor/
+node_modules/
+coverage/
+.phpunit.result.cache
+.php-cs-fixer.cache
+
+# Local environment overrides.
+.env
+.env.*
+!.env.example
