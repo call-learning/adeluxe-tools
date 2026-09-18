@@ -4,7 +4,7 @@
     {
       "type": "copy",
       "source": "php",
-      "target": "classes/local/clapi/repository"
+      "target": "classes/local/adeluxe/repository"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace __COMPONENT__\local\clapi\repository;
+namespace __COMPONENT__\local\adeluxe\repository;
 
 use moodle_database;
 

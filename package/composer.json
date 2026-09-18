@@ -1,9 +1,9 @@
 {
-  "name": "adeluxe-tools/moodle-clapi",
-  "description": "Reusable Moodle source modules materialised into consuming plugins.",
-  "type": "adeluxe-tools-clapi",
+  "name": "adeluxe-tools/moodle-adeluxe",
+  "description": "Reusable Adeluxe Moodle source modules materialised into consuming plugins.",
+  "type": "adeluxe-tools-adeluxe",
   "license": "MIT",
   "require": {
-    "adeluxe-tools/clapi-installer": "^0.1"
+    "adeluxe-tools/adeluxe-installer": "^0.1"
   }
 }

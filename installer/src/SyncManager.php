@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdeluxeTools\ClapiInstaller;
+namespace AdeluxeTools\AdeluxeInstaller;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -11,7 +11,7 @@ use RuntimeException;
 
 final class SyncManager
 {
-    private const MANIFEST = '.clapi/generated.json';
+    private const MANIFEST = '.adeluxe/generated.json';
 
     public function __construct(
         private readonly Composer $composer,
@@ -23,7 +23,7 @@ final class SyncManager
     {
         $root = $this->composer->getPackage();
         $extra = $root->getExtra();
-        $config = $extra['clapi'] ?? null;
+        $config = $extra['adeluxe'] ?? null;
 
         if (!is_array($config)) {
             return;
@@ -34,16 +34,16 @@ final class SyncManager
         $target = rtrim((string)($config['target'] ?? '.'), '/');
 
         if (!is_string($component) || $component === '') {
-            throw new RuntimeException('extra.clapi.component is required, e.g. mod_competvet.');
+            throw new RuntimeException('extra.adeluxe.component is required, e.g. mod_competvet.');
         }
         if (!is_array($modules)) {
-            throw new RuntimeException('extra.clapi.modules must be an array.');
+            throw new RuntimeException('extra.adeluxe.modules must be an array.');
         }
 
         $previous = $this->loadGeneratedManifest();
         $current = ['files' => [], 'lang' => []];
 
-        foreach ($this->getClapiPackages() as $package) {
+        foreach ($this->getAdeluxePackages() as $package) {
             $packagePath = $this->composer->getInstallationManager()->getInstallPath($package);
             if ($packagePath === null) {
                 continue;
@@ -58,7 +58,7 @@ final class SyncManager
                     continue;
                 }
 
-                $this->io->write(sprintf('<info>CLAPI</info> Installing module <comment>%s</comment>', $module));
+                $this->io->write(sprintf('<info>ADELUXE</info> Installing module <comment>%s</comment>', $module));
                 $this->installModule($modulePath, $target, $component, $current);
             }
         }
@@ -69,11 +69,11 @@ final class SyncManager
     }
 
     /** @return PackageInterface[] */
-    private function getClapiPackages(): array
+    private function getAdeluxePackages(): array
     {
         return array_values(array_filter(
             $this->composer->getRepositoryManager()->getLocalRepository()->getPackages(),
-            static fn(PackageInterface $package): bool => $package->getType() === 'adeluxe-tools-clapi'
+            static fn(PackageInterface $package): bool => $package->getType() === 'adeluxe-tools-adeluxe'
         ));
     }
 
@@ -81,7 +81,7 @@ final class SyncManager
     {
         $manifestPath = $modulePath . '/module.json';
         if (!is_file($manifestPath)) {
-            throw new RuntimeException('Missing CLAPI module manifest: ' . $manifestPath);
+            throw new RuntimeException('Missing Adeluxe module manifest: ' . $manifestPath);
         }
 
         $manifest = json_decode((string)file_get_contents($manifestPath), true, 512, JSON_THROW_ON_ERROR);
@@ -111,7 +111,7 @@ final class SyncManager
             return;
         }
         if (!is_dir($source)) {
-            throw new RuntimeException('CLAPI resource does not exist: ' . $source);
+            throw new RuntimeException('Adeluxe resource does not exist: ' . $source);
         }
 
         $iterator = new \RecursiveIteratorIterator(
@@ -145,7 +145,7 @@ final class SyncManager
         foreach (array_diff($previous, $current) as $file) {
             if (is_string($file) && is_file($file)) {
                 unlink($file);
-                $this->io->write('<comment>CLAPI</comment> Removed ' . $file);
+                $this->io->write('<comment>ADELUXE</comment> Removed ' . $file);
             }
         }
     }
@@ -158,8 +158,8 @@ final class SyncManager
 
         $file = $target . '/lang/en/' . $component . '.php';
         $contents = is_file($file) ? (string)file_get_contents($file) : "<?php\n";
-        $begin = '// CLAPI-GENERATED-BEGIN';
-        $end = '// CLAPI-GENERATED-END';
+        $begin = '// ADELUXE-GENERATED-BEGIN';
+        $end = '// ADELUXE-GENERATED-END';
 
         $block = $begin . "\n";
         ksort($current);
@@ -192,8 +192,8 @@ final class SyncManager
 
     private function saveGeneratedManifest(array $manifest): void
     {
-        if (!is_dir('.clapi')) {
-            mkdir('.clapi', 0777, true);
+        if (!is_dir('.adeluxe')) {
+            mkdir('.adeluxe', 0777, true);
         }
         file_put_contents(self::MANIFEST, json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
     }

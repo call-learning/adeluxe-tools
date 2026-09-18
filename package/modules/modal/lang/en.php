@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'clapi_modal_title' => 'Information',
-    'clapi_modal_default_message' => 'No additional information is available.',
+    'adeluxe_modal_title' => 'Information',
+    'adeluxe_modal_default_message' => 'No additional information is available.',
 ];

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace AdeluxeTools\ClapiInstaller;
+namespace AdeluxeTools\AdeluxeInstaller;
 
 use Composer\Composer;
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 
-final class ClapiPackageInstaller extends LibraryInstaller
+final class AdeluxePackageInstaller extends LibraryInstaller
 {
     public function supports(string $packageType): bool
     {
-        return $packageType === 'adeluxe-tools-clapi';
+        return $packageType === 'adeluxe-tools-adeluxe';
     }
 
     public function getInstallPath(PackageInterface $package): string
@@ -20,6 +20,6 @@ final class ClapiPackageInstaller extends LibraryInstaller
         $name = $package->getPrettyName();
         $shortname = str_contains($name, '/') ? substr($name, strrpos($name, '/') + 1) : $name;
 
-        return '.clapi/packages/' . $shortname;
+        return '.adeluxe/packages/' . $shortname;
     }
 }

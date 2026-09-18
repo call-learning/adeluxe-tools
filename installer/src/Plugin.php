@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdeluxeTools\ClapiInstaller;
+namespace AdeluxeTools\AdeluxeInstaller;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
@@ -20,7 +20,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
     {
         $this->composer = $composer;
         $this->io = $io;
-        $composer->getInstallationManager()->addInstaller(new ClapiPackageInstaller($io, $composer));
+        $composer->getInstallationManager()->addInstaller(new AdeluxePackageInstaller($io, $composer));
     }
 
     public function deactivate(Composer $composer, IOInterface $io): void

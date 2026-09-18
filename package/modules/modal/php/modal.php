@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace __COMPONENT__\local\clapi\modal;
+namespace __COMPONENT__\local\adeluxe\modal;
 
 use moodle_url;
 

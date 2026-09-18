@@ -4,17 +4,17 @@
     {
       "type": "copy",
       "source": "php",
-      "target": "classes/local/clapi/modal"
+      "target": "classes/local/adeluxe/modal"
     },
     {
       "type": "copy",
       "source": "amd",
-      "target": "amd/src/local/clapi/modal"
+      "target": "amd/src/local/adeluxe/modal"
     },
     {
       "type": "copy",
       "source": "templates",
-      "target": "templates/local/clapi/modal"
+      "target": "templates/local/adeluxe/modal"
     },
     {
       "type": "lang",

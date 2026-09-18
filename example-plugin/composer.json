@@ -14,15 +14,15 @@
     }
   ],
   "require-dev": {
-    "adeluxe-tools/moodle-clapi": "@dev"
+    "adeluxe-tools/moodle-adeluxe": "@dev"
   },
   "config": {
     "allow-plugins": {
-      "adeluxe-tools/clapi-installer": true
+      "adeluxe-tools/adeluxe-installer": true
     }
   },
   "extra": {
-    "clapi": {
+    "adeluxe": {
       "component": "mod_example",
       "target": ".",
       "modules": [
